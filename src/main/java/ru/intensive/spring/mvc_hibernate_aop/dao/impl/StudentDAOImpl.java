@@ -1,33 +1,34 @@
 package ru.intensive.spring.mvc_hibernate_aop.dao.impl;
 
-import java.util.List;
+import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import ru.intensive.spring.mvc_hibernate_aop.dao.StudentDAO;
 import ru.intensive.spring.mvc_hibernate_aop.entity.Student;
 
+import java.util.List;
+
 @Repository
+@RequiredArgsConstructor
 public class StudentDAOImpl implements StudentDAO {
 
     private final SessionFactory sessionFactory;
 
-    public StudentDAOImpl(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
-
     @Override
     public List<Student> getAllStudents() {
-        Session session = sessionFactory.openSession();
-        return session.createQuery("from Student", Student.class).getResultList();
+        try (Session session = sessionFactory.openSession()) {
+            return session.createQuery("from Student", Student.class).getResultList();
+        }
     }
 
     @Override
     public Student getStudent(int id) {
-        Session session = sessionFactory.getCurrentSession();
-        return session.get(Student.class, id);
+        try (Session session = sessionFactory.openSession()) {
+            return session.get(Student.class, id);
+        }
     }
 
     @Override

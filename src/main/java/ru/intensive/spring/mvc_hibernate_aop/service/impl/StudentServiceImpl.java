@@ -1,5 +1,6 @@
 package ru.intensive.spring.mvc_hibernate_aop.service.impl;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.intensive.spring.mvc_hibernate_aop.dao.StudentDAO;
@@ -8,13 +9,10 @@ import java.util.List;
 import ru.intensive.spring.mvc_hibernate_aop.service.StudentService;
 
 @Service
+@RequiredArgsConstructor
 public class StudentServiceImpl implements StudentService {
 
     private final StudentDAO studentDAO;
-
-    public StudentServiceImpl(StudentDAO studentDAO) {
-        this.studentDAO = studentDAO;
-    }
 
     @Override
     public List<Student> getAllStudents() {
@@ -27,7 +25,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    @Transactional()
+    @Transactional
     public void saveStudent(Student student) {
         studentDAO.saveStudent(student);
     }

@@ -2,20 +2,18 @@ package ru.intensive.spring.mvc_hibernate_aop.configuration_example;
 
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
-import java.beans.PropertyVetoException;
-import java.util.Properties;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.sql.DataSource;
+import java.beans.PropertyVetoException;
+import java.util.Properties;
 
 @Configuration
 @ComponentScan("ru.intensive.spring.mvc_hibernate_aop")
@@ -44,7 +42,7 @@ public class MyConfig {
     public LocalSessionFactoryBean sessionFactory(){
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan("ru.sergeyivanov.spring.rest.entity");
+        sessionFactory.setPackagesToScan("ru.intensive.spring.mvc_hibernate_aop");
 
         Properties hibernateProperties = new Properties();
         hibernateProperties.setProperty("hibernate.show_sql", "true");

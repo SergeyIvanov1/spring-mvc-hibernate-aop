@@ -28,29 +28,29 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
-          destroy-method="close">
-        <property name="driverClass" value="org.postgresql.Driver"/>
-        <property name="jdbcUrl" value="jdbc:postgresql://localhost:5435/intensive_db"/>
-        <property name="user" value="test_login"/>
-        <property name="password" value="test_password"/>
-    </bean>
+<!--    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"-->
+<!--          destroy-method="close">-->
+<!--        <property name="driverClass" value="org.postgresql.Driver"/>-->
+<!--        <property name="jdbcUrl" value="jdbc:postgresql://localhost:5435/intensive_db"/>-->
+<!--        <property name="user" value="test_login"/>-->
+<!--        <property name="password" value="test_password"/>-->
+<!--    </bean>-->
 
-    <bean id="sessionFactory"
-          class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
-        <property name="packagesToScan" value="ru.intensive.spring.mvc_hibernate_aop"/>
-        <property name="hibernateProperties">
-            <props>
-                <prop key="hibernate.show_sql">true</prop>
-            </props>
-        </property>
-    </bean>
+<!--    <bean id="sessionFactory"-->
+<!--          class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">-->
+<!--        <property name="dataSource" ref="dataSource"/>-->
+<!--        <property name="packagesToScan" value="ru.intensive.spring.mvc_hibernate_aop"/>-->
+<!--        <property name="hibernateProperties">-->
+<!--            <props>-->
+<!--                <prop key="hibernate.show_sql">true</prop>-->
+<!--            </props>-->
+<!--        </property>-->
+<!--    </bean>-->
 
-    <bean id="transactionManager"
-          class="org.springframework.orm.hibernate5.HibernateTransactionManager">
-        <property name="sessionFactory" ref="sessionFactory"/>
-    </bean>
+<!--    <bean id="transactionManager"-->
+<!--          class="org.springframework.orm.hibernate5.HibernateTransactionManager">-->
+<!--        <property name="sessionFactory" ref="sessionFactory"/>-->
+<!--    </bean>-->
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
