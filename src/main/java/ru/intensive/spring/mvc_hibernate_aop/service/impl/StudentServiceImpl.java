@@ -5,8 +5,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.intensive.spring.mvc_hibernate_aop.dao.StudentDAO;
 import ru.intensive.spring.mvc_hibernate_aop.entity.Student;
-import java.util.List;
 import ru.intensive.spring.mvc_hibernate_aop.service.StudentService;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor

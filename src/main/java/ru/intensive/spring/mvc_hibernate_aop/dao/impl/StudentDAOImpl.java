@@ -5,7 +5,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 import ru.intensive.spring.mvc_hibernate_aop.dao.StudentDAO;
 import ru.intensive.spring.mvc_hibernate_aop.entity.Student;
 
